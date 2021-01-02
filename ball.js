@@ -1,8 +1,18 @@
 export class Ball {
   constructor(stageWidth, stageHeight, radius, speed) { 
     this.radius = radius;
-    this.vx = speed;
-    this.vy = speed;
+
+    // Random direction
+    let directX = Math.floor(Math.random() * 2);
+    let directY = Math.floor(Math.random() * 2);
+    this.vx = (Math.random() + 1) * speed;
+    this.vy = (Math.random() + 1) * speed;
+    if(directX === 0) {
+      this.vx *= -1;
+    }
+    if(directY === 0) {
+      this.vy *= -1;
+    }
 
     const diameter = this.radius * 2;
     // this.x = Math.random() * stageWidth;
