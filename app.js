@@ -1,4 +1,4 @@
-import { Ball } from './ball.js';
+import { BallGroup } from './ballgroup.js';
 import { Block } from './block.js';
 
 class App {
@@ -12,8 +12,8 @@ class App {
     window.addEventListener('resize', this.resize.bind(this), false);
     this.resize();
 
-    this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 10);
     this.block = new Block(700, 30, 300, 450);
+    this.ballGroup = new BallGroup(this.stageWidth, this.stageHeight);
 
     window.requestAnimationFrame(this.animate.bind(this));
   }
@@ -33,7 +33,7 @@ class App {
     this.ctx.clearRect(0,0,this.stageWidth, this.stageHeight);
 
     this.block.draw(this.ctx);
-    this.ball.draw(this.ctx, this.stageWidth, this.stageHeight, this.block);
+    this.ballGroup.draw(this.ctx, this.stageWidth, this.stageHeight, this.block);
   }
 
 }

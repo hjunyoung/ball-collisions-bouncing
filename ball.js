@@ -1,7 +1,8 @@
 export class Ball {
-  constructor(stageWidth, stageHeight, radius, speed) { 
-    this.radius = radius;
-
+  constructor(totalBalls, stageWidth, stageHeight, radius, speed, color) { 
+    this.totalBalls = totalBalls;
+    this.color = color;
+    
     // Random direction
     let directX = Math.floor(Math.random() * 2);
     let directY = Math.floor(Math.random() * 2);
@@ -13,7 +14,8 @@ export class Ball {
     if(directY === 0) {
       this.vy *= -1;
     }
-
+    
+    this.radius = radius;
     const diameter = this.radius * 2;
     // this.x = Math.random() * stageWidth;
     this.x = this.radius + 1 + (Math.random() * (stageWidth - diameter - 1));
@@ -26,10 +28,9 @@ export class Ball {
     this.y += this.vy;
 
     this.bounceWindow(stageWidth, stageHeight);
-
     this.bounceBlock(block);
 
-    ctx.fillStyle = '#fdd700';
+    ctx.fillStyle = this.color;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
     ctx.fill();
